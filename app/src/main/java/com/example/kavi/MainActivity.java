@@ -11,11 +11,12 @@ import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
-class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     private ImageButton toggleButton;
     boolean hasCameraFlash=false;
@@ -35,7 +36,7 @@ class MainActivity extends AppCompatActivity {
                 if(hasCameraFlash) {
                     if (flashOn) {
                         flashOn = false;
-                        toggleButton.setImageResource(R.drawable.power_off);
+                        toggleButton.setImageResource(R.drawable.power_on);
                         try {
                             flashLightOff();
                         } catch (CameraAccessException e) {
@@ -61,7 +62,7 @@ class MainActivity extends AppCompatActivity {
 private void flashLightOn() throws CameraAccessException {
     CameraManager cameraManager=(CameraManager) getSystemService(Context.CAMERA_SERVICE);
      String cameraId=cameraManager.getCameraIdList()[0];
-
+    Log.d("kavi","nwork");
         cameraManager.setTorchMode(cameraId,true);
 
     Toast.makeText(MainActivity.this,"Flashlight is on",Toast.LENGTH_SHORT).show();
@@ -72,7 +73,7 @@ private void flashLightOn() throws CameraAccessException {
 
         CameraManager cameraManager=(CameraManager) getSystemService(Context.CAMERA_SERVICE);
         String cameraId=cameraManager.getCameraIdList()[0];
-
+        Log.d("kavi","work");
             cameraManager.setTorchMode(cameraId,false);
 
         Toast.makeText(MainActivity.this,"Flashlight is off",Toast.LENGTH_SHORT).show();
